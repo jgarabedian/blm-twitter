@@ -4,5 +4,6 @@ navbar = dbc.NavbarSimple(
     brand="BLM Twitter Analysis",
     brand_href="#",
     color="dark",
+    fluid=True,
     dark=True,
 )

@@ -94,6 +94,12 @@ app.layout = html.Div(children=[
         fluid=True,
         className="bg-secondary",
         children=[
+            html.H5(
+                className="text-white pt-2",
+                children=[
+                    "Analyzing the sentiment of tweets that mention BLM"
+                ]
+            ),
             dbc.Row(children=[
                 dbc.Col(
                     className="mb-2 mt-2",

@@ -31,7 +31,8 @@ class TwitterClient(object):
 
     def get_polarity(self, tweet):
         analysis = TextBlob(self.clean_tweet(tweet))
-        return analysis.polarity
+        # ramp up the intensity
+        return analysis.polarity * 10
 
     def get_tweets(self, query, geocode, city, count=20):
         tweets = []
