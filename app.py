@@ -80,7 +80,9 @@ meta_tags = {
     "description": "Analyzing the twitter content across the country around BLM."
 }
 
-app = dash.Dash(external_stylesheets=[dbc.themes.BOOTSTRAP], meta_tags=[meta_tags])
+app = dash.Dash(__name__, server=server,
+                external_stylesheets=[dbc.themes.BOOTSTRAP],
+                meta_tags=[meta_tags])
 
 app.title = "BLM Twitter"
 
