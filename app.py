@@ -3,11 +3,13 @@ import plotly.express as px
 import plotly.io as pio
 import plotly.graph_objects as go
 import pandas as pd
+import flask
 import dash
 import dash_core_components as dcc
 import dash_html_components as html
 import dash_bootstrap_components as dbc
 from components import nav
+from components import index
 
 
 import json
@@ -69,9 +71,20 @@ avg_sent_fig = go.Figure(go.Indicator(
 ))
 
 avg_sent_fig.layout.template = 'plotly_dark'
-# avg_sent_fig.layout.colorscale = px.colors.diverging.Armyrose
 
-app = dash.Dash(external_stylesheets=[dbc.themes.BOOTSTRAP])
+server = flask.Flask(__name__)
+
+
+meta_tags = {
+    "name": "BLM Twitter",
+    "description": "Analyzing the twitter content across the country around BLM."
+}
+
+app = dash.Dash(external_stylesheets=[dbc.themes.BOOTSTRAP], meta_tags=[meta_tags])
+
+app.title = "BLM Twitter"
+
+app.index_string = index.index_string
 
 app.layout = html.Div(children=[
     html.Div(nav.navbar),
