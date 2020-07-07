@@ -1,0 +1,50 @@
+[
+  {
+    "city": "Washington, DC",
+    "geocode": "38.9072,-77.0369,50km"
+  },
+  {
+    "city": "New York City, NY",
+    "geocode": "40.7128,-74.0060,50km"
+  },
+  {
+    "city": "Frederick, MD",
+    "geocode": "39.4143,-77.4105,50km"
+  },
+  {
+    "city": "Los Angeles, CA",
+    "geocode": "34.052235,-118.243683,50km"
+  },
+  {
+    "city": "Seattle, WA",
+    "geocode": "47.6062,-122.3321,50km"
+  },
+  {
+    "city": "Chicago, IL",
+    "geocode": "41.8781,-87.6298,50km"
+  },
+  {
+    "city": "Portland, OR",
+    "geocode": "45.5051,-122.6750,50km"
+  },
+  {
+    "city": "Tampa Bay, FL",
+    "geocode": "27.9506,-82.4572,50km"
+  },
+  {
+    "city": "Amarillo, TX",
+    "geocode": "35.2220,-101.8313,50km"
+  },
+  {
+    "city": "Bismark, ND",
+    "geocode": "46.8083,-100.7837,50km"
+  },
+  {
+    "city": "Salt Lake City, UT",
+    "geocode": "40.7608,-111.8910,50km"
+  },
+  {
+    "city": "Wichita, KS",
+    "geocode": "37.6872,-97.3301,50km"
+  }
+]
