@@ -50,8 +50,7 @@ df2 = df.groupby(['city']).mean().reset_index()
 fig = px.scatter_mapbox(data_frame=df2, lat="lat", lon="long",
                         color="polarity", color_continuous_scale=px.colors.diverging.Picnic,
                         color_continuous_midpoint=0, zoom=3, text="city")
-fig.update_layout(mapbox_style="dark", mapbox_accesstoken=mapbox_token)
-# fig.update_layout(mapbox_style="dark", mapbox_accesstoken=mapbox_token, template="plotly_dark")
+fig.update_layout(mapbox_style="dark", mapbox_accesstoken=mapbox_token, template="plotly_dark")
 
 avg_sent_fig = go.Figure(go.Indicator(
     mode="gauge+number",
