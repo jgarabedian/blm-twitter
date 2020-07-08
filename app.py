@@ -3,6 +3,7 @@ import plotly.express as px
 import plotly.io as pio
 import plotly.graph_objects as go
 import pandas as pd
+import os
 import flask
 import dash
 import dash_core_components as dcc
@@ -16,10 +17,10 @@ import json
 with open("locations.json", "r") as location_file:
     locations = json.load(location_file)
 
-with open("mapbox_credentials.json", "r") as mapbox:
-    token = json.load(mapbox)
 
-mapbox_token = token[0]['token']
+mapbox_token = os.environ.get("MAPBOX_TOKEN")
+
+# print(mapbox_token)
 
 api = TwitterClient()
 tweets = []
@@ -43,17 +44,14 @@ print("Neutral tweets percentage: {} % \
 
 # print the most positive tweet
 df = pd.DataFrame(tweets)
-# print('\nShow me a positive tweet\n\n')
-# print(df['text'][df['polarity'] == max(df['polarity'])])
-# print('\nShow me the most negative tweet\n\n')
-# print(df['text'][df['polarity'] == min(df['polarity'])])
 
 df2 = df.groupby(['city']).mean().reset_index()
-token = "pk.eyJ1IjoiamdhcmFiZWRpYW45NiIsImEiOiJja2NiOXIwMHoyMzBoMnlvNjlvbDM5YjdpIn0.kDrWnOiNYLSpA0zR_6Gyjw"
+
 fig = px.scatter_mapbox(data_frame=df2, lat="lat", lon="long",
                         color="polarity", color_continuous_scale=px.colors.diverging.Picnic,
                         color_continuous_midpoint=0, zoom=3, text="city")
-fig.update_layout(mapbox_style="dark", mapbox_accesstoken=mapbox_token, template="plotly_dark")
+fig.update_layout(mapbox_style="dark", mapbox_accesstoken=mapbox_token)
+# fig.update_layout(mapbox_style="dark", mapbox_accesstoken=mapbox_token, template="plotly_dark")
 
 avg_sent_fig = go.Figure(go.Indicator(
     mode="gauge+number",

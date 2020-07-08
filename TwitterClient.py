@@ -7,12 +7,14 @@ from textblob import TextBlob
 class TwitterClient(object):
     def __init__(self):
         try:
-            import json
+            import os
+            consumer_key = os.environ.get("CONSUMER_KEY")
+            consumer_secret = os.environ.get("CONSUMER_SECRET")
+            access_token = os.environ.get("ACCESS_TOKEN")
+            access_secret = os.environ.get("ACCESS_SECRET")
 
-            with open("twitter_credentials.json", "r") as file:
-                creds = json.load(file)
-            self.auth = OAuthHandler(creds['CONSUMER_KEY'], creds['CONSUMER_SECRET'])
-            self.auth.set_access_token(creds['ACCESS_TOKEN'], creds['ACCESS_SECRET'])
+            self.auth = OAuthHandler(consumer_key, consumer_secret)
+            self.auth.set_access_token(access_token, access_secret)
             self.api = tweepy.API(self.auth)
         except:
             print("Authentication error")
