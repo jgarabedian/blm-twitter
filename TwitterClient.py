@@ -2,6 +2,7 @@ import re
 import tweepy
 from tweepy import OAuthHandler
 from textblob import TextBlob
+from textblob.sentiments import NaiveBayesAnalyzer
 
 
 class TwitterClient(object):
@@ -23,7 +24,7 @@ class TwitterClient(object):
         return ' '.join(re.sub("(@[A-Za-z0-9]+)|([^0-9A-Za-z \t]) | (\w+:\ / \ / \S+)", " ", tweet).split())
 
     def get_sentiment(self, tweet):
-        analysis = TextBlob(self.clean_tweet(tweet))
+        analysis = TextBlob(self.clean_tweet(tweet), analyzer=NaiveBayesAnalyzer())
         if analysis.polarity > 0:
             return "positive"
         elif analysis.polarity == 0:
@@ -36,17 +37,18 @@ class TwitterClient(object):
         # ramp up the intensity
         return analysis.polarity * 2
 
-    def get_tweets(self, query, geocode, city, count=20):
+    def get_tweets(self, query, geocode, city='', count=20):
         tweets = []
 
         try:
             fetched_tweets = self.api.search(q=query, count=count, geocode=geocode,
-                                              lang="en")
+                                              lang="en", tweet_mode="extended", truncated=False)
+
             for tweet in fetched_tweets:
                 parsed_tweet = {}
-                parsed_tweet['text'] = tweet.text
-                parsed_tweet['sentiment'] = self.get_sentiment(tweet.text)
-                parsed_tweet['polarity'] = self.get_polarity(tweet.text)
+                parsed_tweet['text'] = tweet.full_text
+                parsed_tweet['sentiment'] = self.get_sentiment(tweet.full_text)
+                parsed_tweet['polarity'] = self.get_polarity(tweet.full_text)
                 parsed_tweet['city'] = city
                 # get the coordinate info
                 coordinates = geocode.split(",")

@@ -1,0 +1,40 @@
+.main-container {
+    height: calc(100vh - 56px);
+    overflow: auto;
+    padding-bottom: 1em;
+}
+
+.tweetcard {
+    display: inline-flex;
+    width: 100%;
+}
+
+.tweetcard__icon {
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tweetcard__icon__logo {
+    width: 48px;
+    height: auto;
+    display: block;
+}
+
+.tweetcard__content {
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.tweetcard__content__meta {
+    padding: 8px;
+    padding-right: 2px;
+    display: block;
+    text-align: right;
+    min-width: 100px;
+    align-items: center;
+}

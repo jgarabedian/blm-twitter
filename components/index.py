@@ -2,7 +2,6 @@ index_string = """<!DOCTYPE html>
 <html>
     <head>
         <!-- Global site tag (gtag.js) - Google Analytics -->
-        <!-- Global site tag (gtag.js) - Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-150551765-4"></script>
         <script>
           window.dataLayer = window.dataLayer || [];
