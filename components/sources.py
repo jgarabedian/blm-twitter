@@ -1,6 +1,10 @@
 import dash_html_components as html
 import dash_bootstrap_components as dbc
 
+import json
+with open("sources.json", "r") as source_file:
+    sources = json.load(source_file)
+
 
 def create_card(title, source, link):
     return dbc.Card(
@@ -11,46 +15,29 @@ def create_card(title, source, link):
         body=True)
 
 
+def create_col(card: dbc.Card) -> dbc.Col:
+    return dbc.Col(
+        className="mb-2",
+        children=[card],
+        width=12,
+        sm=12,
+        lg=6,
+        xl=4
+    )
+
+
+def create_source_page() -> list:
+    cols = []
+    for source in sources:
+        card = create_card(source['title'], source['source'], source['href'])
+        cols.append(create_col(card))
+
+    return cols
+
+
 source_page = html.Div(
-    # className='d-flex justify-content-around',
     children=[
         dbc.Row(className="m-4",
-                children=[
-                    dbc.Col(
-                        className="mb-2",
-                        children=[create_card("Twitter API", "Twitter", "https://developer.twitter.com/en/docs")],
-                        width=12,
-                        sm=12,
-                        lg=6,
-                        xl=4,
-                    ),
-                    dbc.Col(
-                        className="mb-2",
-                        children=[
-                            create_card("Twitter API Package", "Tweepy", "http://docs.tweepy.org/en/latest/api.html")],
-                        width=12,
-                        sm=12,
-                        lg=6,
-                        xl=4,
-                    ),
-                    dbc.Col(
-                        className="mb-2",
-                        children=[create_card("Visualizations", "Plotly Dash", "https://plotly.com/dash/")],
-                        width=12,
-                        sm=12,
-                        lg=6,
-                        xl=4,
-                    ),
-                    dbc.Col(
-                        className="mb-2",
-                        children=[create_card("Natural Language Processing", "TextBlob",
-                                              "https://textblob.readthedocs.io/en/dev/")],
-                        width=12,
-                        sm=12,
-                        lg=6,
-                        xl=4,
-
-                    )
-                ])
+                children=create_source_page())
     ]
 )

@@ -1,0 +1,22 @@
+[
+  {
+    "title": "Twitter API",
+    "source": "Twitter",
+    "href": "https://developer.twitter.com/en/docs"
+  },
+  {
+    "title": "Twitter API Package",
+    "source": "Tweepy",
+    "href": "http://docs.tweepy.org/en/latest/api.html"
+  },
+  {
+    "title": "Visualizations",
+    "source": "Plotly Dash",
+    "href": "https://plotly.com/dash/"
+  },
+  {
+    "title": "Natural Language Processing",
+    "source": "TextBlob",
+    "href": "https://textblob.readthedocs.io/en/dev/"
+  }
+]
