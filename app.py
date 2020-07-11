@@ -9,6 +9,7 @@ import dash_bootstrap_components as dbc
 from components import nav
 from components import index
 from components import sources
+from components.method import method_page
 from components.dashboards import create_dashboards
 from components.tweetcard import create_deck
 
@@ -25,18 +26,17 @@ for location in locations:
     tweets = tweets + city_tweets
 
 # picking positive tweets from tweets
-ptweets = [tweet for tweet in tweets if tweet['sentiment'] == 'positive']
+# ptweets = [tweet for tweet in tweets if tweet['sentiment'] == 'positive']
 # percentage of positive tweets
-print("Positive tweets percentage: {} %".format(100 * len(ptweets) / len(tweets)))
+# print("Positive tweets percentage: {} %".format(100 * len(ptweets) / len(tweets)))
 # picking negative tweets from tweets
-ntweets = [tweet for tweet in tweets if tweet['sentiment'] == 'negative']
+# ntweets = [tweet for tweet in tweets if tweet['sentiment'] == 'negative']
 # percentage of negative tweets
-print("Negative tweets percentage: {} %".format(100 * len(ntweets) / len(tweets)))
+# print("Negative tweets percentage: {} %".format(100 * len(ntweets) / len(tweets)))
 # percentage of neutral tweets
-print("Neutral tweets percentage: {} % \
-      ".format(100 * (len(tweets) - (len(ntweets) + len(ptweets))) / len(tweets)))
+# print("Neutral tweets percentage: {} % \
+#       ".format(100 * (len(tweets) - (len(ntweets) + len(ptweets))) / len(tweets)))
 
-# print the most positive tweet
 df = pd.DataFrame(tweets)
 
 server = flask.Flask(__name__)
@@ -47,7 +47,7 @@ meta_tags = {
 }
 
 app = dash.Dash(__name__, server=server, suppress_callback_exceptions=True,
-                external_stylesheets=[dbc.themes.BOOTSTRAP],
+                external_stylesheets=[dbc.themes.SLATE],
                 meta_tags=[meta_tags])
 
 app.title = "BLM Twitter"
@@ -61,21 +61,9 @@ app.layout = html.Div(children=[
     html.Div(nav.navbar),
     dbc.Container(
         fluid=True,
-        className="bg-dark main-container",
+        className="main-container",
         children=[
-
-            html.Div(id="page-content"),
-            # dbc.Container(
-            #     fluid=True,
-            #     className="bg-secondary",
-            #     children=[
-            #         dbc.ListGroup(
-            #             id="tweet-deck",
-            #             className="bg-dark"
-            #         )
-            #     ]
-            # )
-
+            html.Div(id="page-content")
         ])
 
 ])
@@ -86,8 +74,13 @@ app.layout = html.Div(children=[
 def update_path(pathname):
     if pathname == '/sources':
         return sources.source_page
-    if pathname == '/':
+    elif pathname == '/':
         return dash_page
+    elif pathname == '/method':
+        return method_page
+    else:
+        return dash_page
+
 
 @app.callback([Output('tweet-deck', 'children'),
                Output('city-name', 'children')],

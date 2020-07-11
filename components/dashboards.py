@@ -54,13 +54,12 @@ def create_dashboards(df):
     dash_page = html.Div(
         children=[
             html.H5(
-                className="text-white-50 pt-2",
+                className="pt-2",
                 children=[
                     "Analyzing the sentiment of tweets that mention BLM"
                 ]
             ),
-            html.P(className="text-white",
-                   children='Click on the map to see the tweets we\'re analyzing '),
+            html.P(children='Click on the map to see the tweets we\'re analyzing '),
             dbc.Row(children=[
                 dbc.Col(
                     className="mb-2 mt-2",
@@ -79,7 +78,6 @@ def create_dashboards(df):
                             # html.Div(
                             dcc.Graph(figure=avg_sent_fig,
                                       className="pb-2"),
-                                # className="mb-2"
                             # ),
                             dcc.Graph(figure=bar_fig)
                         ]
@@ -93,15 +91,12 @@ def create_dashboards(df):
                         children=[
                             dbc.Container(
                                 fluid=True,
-                                className="bg-dark",
                                 children=[
                                     html.H3(
-                                        id="city-name",
-                                        className="text-white-50"
+                                        id="city-name"
                                     ),
                                     dbc.ListGroup(
                                         id="tweet-deck",
-                                        className="bg-dark",
                                         children=create_deck(df, None),
                                         flush=True
 

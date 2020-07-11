@@ -30,7 +30,7 @@ def create_deck(df: pd.DataFrame, city: str) -> html.Div:
                             ]
                         ),
                         html.Div(
-                            className="tweetcard__content text-white text-wrap",
+                            className="tweetcard__content text-wrap",
                             children=[
                                 row['text'],
                                 html.Div(
