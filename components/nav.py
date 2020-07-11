@@ -11,4 +11,5 @@ navbar = dbc.NavbarSimple(
     color="dark",
     fluid=True,
     dark=True,
+    className="border-bottom border-light"
 )

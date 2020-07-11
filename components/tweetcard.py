@@ -4,7 +4,6 @@ import pandas as pd
 
 
 def create_deck(df: pd.DataFrame, city: str) -> html.Div:
-    # df = pd.DataFrame(df)
     if city is not None:
         df = df[df['city'] == city]
 

@@ -1,5 +1,5 @@
 from TwitterClient import TwitterClient
-from tweetcard import create_deck
+from components.tweetcard import create_deck
 import pandas as pd
 
 api = TwitterClient()
