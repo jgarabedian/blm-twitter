@@ -13,6 +13,7 @@ class TwitterClient(object):
             consumer_secret = os.environ.get("CONSUMER_SECRET")
             access_token = os.environ.get("ACCESS_TOKEN")
             access_secret = os.environ.get("ACCESS_SECRET")
+            print(consumer_key)
 
             self.auth = OAuthHandler(consumer_key, consumer_secret)
             self.auth.set_access_token(access_token, access_secret)
