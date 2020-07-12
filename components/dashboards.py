@@ -10,6 +10,11 @@ mapbox_token = os.environ.get("MAPBOX_TOKEN")
 
 
 def create_dashboards(df):
+    """
+    Main dashboard function
+    :param df: dataframe to visualize
+    :return: html children
+    """
     df2 = df.groupby(['city']).mean().reset_index()
 
     fig = px.scatter_mapbox(data_frame=df2, lat="lat", lon="long",
@@ -38,7 +43,6 @@ def create_dashboards(df):
     colors = ["rgb(2, 117, 216)", "rgb(247, 247, 247)", "rgb(217, 83, 79)"]
 
     df3 = df.groupby('sentiment').agg({"text":"nunique"}).reset_index()
-    print(df3)
 
     bar_fig = go.Figure(go.Pie(
         labels=df3['sentiment'],

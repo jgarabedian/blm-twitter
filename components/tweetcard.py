@@ -4,6 +4,12 @@ import pandas as pd
 
 
 def create_deck(df: pd.DataFrame, city: str) -> html.Div:
+    """
+    Create a deck of tweets
+    :param df: dataframe to get tweets of
+    :param city: string of city to filter on
+    :return: list of child elements
+    """
     if city is not None:
         df = df[df['city'] == city]
 
@@ -14,7 +20,7 @@ def create_deck(df: pd.DataFrame, city: str) -> html.Div:
         elif row['sentiment'] == 'neutral':
             text_color = "text-light"
         else:
-            text_color = "text-primary"
+            text_color = "text-info"
         tweet = dbc.ListGroupItem(
             children=[
                 html.Div(
@@ -39,7 +45,7 @@ def create_deck(df: pd.DataFrame, city: str) -> html.Div:
                                             className=text_color,
                                             children=[row['sentiment']])
                                     ],
-                                    className="tweetcard__content__meta font-italic text-info"
+                                    className="tweetcard__content__meta font-italic text-secondary"
                                 ),
 
                             ]
@@ -49,7 +55,7 @@ def create_deck(df: pd.DataFrame, city: str) -> html.Div:
                 )
             ],
             action=True,
-            className="bg-dark text-white border border-white text-break text-wrap",
+            className="text-break text-wrap",
         )
         list_items.append(tweet)
 

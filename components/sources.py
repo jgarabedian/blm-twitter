@@ -6,16 +6,22 @@ with open("sources.json", "r") as source_file:
     sources = json.load(source_file)
 
 
-def create_card(title, source, link):
-    return dbc.Card(
-        children=[
-            html.H5(title, className="card-title"),
-            dbc.CardLink(source, href=link, target="_blank")
-        ],
-        body=True)
+def create_card(title: str, source: str, link: str) -> dbc.Card:
+    """
+    Create the Card with the appropriate arguments
+    :param title: str - title of the card
+    :param source: str - source of what we're using
+    :param link: str - link to source
+    :return: dbc.Card
+    """
+    return dbc.Card(children=[
+            dbc.CardHeader(html.H5(title, className="card-title")),
+            dbc.CardBody(dbc.CardLink(source, href=link, target="_blank"))
+        ])
 
 
 def create_col(card: dbc.Card) -> dbc.Col:
+    """Pass each card to create a Col element"""
     return dbc.Col(
         className="mb-2",
         children=[card],
@@ -27,6 +33,7 @@ def create_col(card: dbc.Card) -> dbc.Col:
 
 
 def create_source_page() -> list:
+    """Create elements for children of row"""
     cols = []
     for source in sources:
         card = create_card(source['title'], source['source'], source['href'])

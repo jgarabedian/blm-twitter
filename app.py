@@ -89,10 +89,9 @@ def filter_tweets(clickData):
     if clickData is None:
         return '', ''
     city = clickData['points'][0]['text']
-    tweets = create_deck(df, city)
-    return tweets, city
+    new_tweets = create_deck(df, city)
+    return new_tweets, city
 
 
 if __name__ == "__main__":
-    # run the server
     app.run_server(debug=True, use_reloader=True)
