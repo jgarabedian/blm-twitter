@@ -1,3 +1,4 @@
+attrs==19.3.0
 Brotli==1.0.7
 certifi==2020.6.20
 chardet==3.0.4
@@ -17,15 +18,22 @@ itsdangerous==1.1.0
 Jinja2==2.11.2
 joblib==0.16.0
 MarkupSafe==1.1.1
+more-itertools==8.4.0
 nltk==3.5
 numpy==1.19.0
 oauthlib==3.1.0
+packaging==20.4
 pandas==1.0.5
 patsy==0.5.1
 plotly==4.8.2
 plotly-express==0.4.1
+pluggy==0.13.1
+py==1.9.0
+pyparsing==2.4.7
 PySocks==1.7.1
+pytest==5.4.3
 python-dateutil==2.8.1
+python-dotenv==0.14.0
 pytz==2020.1
 regex==2020.6.8
 requests==2.24.0
@@ -39,4 +47,5 @@ tqdm==4.47.0
 tweepy==3.8.0
 twython==3.8.2
 urllib3==1.25.9
+wcwidth==0.2.5
 Werkzeug==1.0.1
