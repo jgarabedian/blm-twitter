@@ -18,5 +18,10 @@
     "title": "Natural Language Processing",
     "source": "TextBlob",
     "href": "https://textblob.readthedocs.io/en/dev/"
+  },
+  {
+    "title": "Map Visualization",
+    "source": "MapBox",
+    "href": "https://www.mapbox.com/"
   }
 ]
