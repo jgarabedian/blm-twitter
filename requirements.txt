@@ -46,6 +46,6 @@ textblob==0.15.3
 tqdm==4.47.0
 tweepy==3.8.0
 twython==3.8.2
-urllib3==1.25.9
+urllib3==1.26.5
 wcwidth==0.2.5
 Werkzeug==1.0.1
